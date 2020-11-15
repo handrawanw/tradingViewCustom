@@ -1,29 +1,7 @@
 import pairs from './pairs'
 var rp = require('request-promise').defaults({json: true})
 const api_root = 'https://min-api.cryptocompare.com'
-const history = {"BTC/USD":{
-	lastBar:{
-		close: 16048.11,
-		high: 16048.99,
-		// isBarClosed: false,
-		// isLastBar: true,
-		low: 16044.75,
-		open: 16044.75,
-		time: 1605447000000,
-		volume: 0.75999369,
-	}
-}}
-
-// BTC/USD:
-		// lastBar:
-		// close: 16048.11
-		// high: 16048.99
-		// isBarClosed: false
-		// isLastBar: true
-		// low: 16044.75
-		// open: 16044.75
-		// time: 1605447000000
-		// volume: 0.75999369
+const history = {}
 
 export default {
 	history: history,
@@ -62,15 +40,13 @@ export default {
 						volume: el.volumefrom 
 					}
 				})
-				// if (first) {
-				//   var lastBar = bars[bars.length - 1]
-				//   history[symbolInfo.name] = {lastBar: lastBar}
-				//   console.log("wawan");
-				//   console.log(lastBar);
-				// }
-				return bars;
+        if (first) {
+          var lastBar = bars[bars.length - 1]
+          history[symbolInfo.name] = {lastBar: lastBar}
+        }
+				return bars
 			} else {
-				return [];
+				return []
 			}
 		})
   }
