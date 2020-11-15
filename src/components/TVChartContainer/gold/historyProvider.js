@@ -43,8 +43,10 @@ export default {
         if (first) {
           var lastBar = bars[bars.length - 1]
           history[symbolInfo.name] = {lastBar: lastBar}
-        }
-				return bars
+		}
+		console.log("bars");
+		console.log(bars);
+				return bars;
 			} else {
 				return []
 			}
