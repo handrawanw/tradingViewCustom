@@ -29,17 +29,40 @@ export default {
 				return []
 			}
 			if (data.Data.length) {
+				// close: 16148.46
+				// high: 16148.46
+				// isBarClosed: true
+				// isLastBar: false
+				// low: 16142.01
+				// open: 16142.01
+				// time: 1605327720000
+				// volume: 2.93
+
 				// console.log(`Actually returned: ${new Date(data.TimeFrom * 1000).toISOString()} - ${new Date(data.TimeTo * 1000).toISOString()}`)
-				var bars = data.Data.map(el => {
-					return {
-						time: el.time * 1000, //TradingView requires bar time in ms
-						low: el.low,
-						high: el.high,
-						open: el.open,
-						close: el.close,
-						volume: el.volumefrom 
-					}
-				})
+				// var bars = data.Data.map(el => {
+				// 	return {
+				// 		time: el.time * 1000, //TradingView requires bar time in ms
+				// 		low: el.low,
+				// 		high: el.high,
+				// 		open: el.open,
+				// 		close: el.close,
+				// 		volume: el.volumefrom 
+				// 	}
+				// });
+				var bars=[],times=[1605327720000,1505327720000,1506327720000,1508327720000],randomValue=[100,1000,10000,100000];
+				while(bars.length<100){
+					bars.push({
+						close: randomValue[Math.ceil(Math.random()*randomValue.length-1)],
+						high: randomValue[Math.ceil(Math.random()*randomValue.length-1)],
+						isBarClosed: true,
+						isLastBar: false,
+						low: randomValue[Math.ceil(Math.random()*randomValue.length-1)],
+						open: randomValue[Math.ceil(Math.random()*randomValue.length-1)],
+						time: times[Math.ceil(Math.random()*times.length-1)],
+						volume: randomValue[Math.ceil(Math.random()*randomValue.length-1)],
+					});
+				}
+				
         if (first) {
           var lastBar = bars[bars.length - 1]
           history[symbolInfo.name] = {lastBar: lastBar}
